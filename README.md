@@ -41,6 +41,7 @@
     pred_box = pred_boxes[b, best_n, gj, gi].unsqueeze(0)
     mask[b, best_n, gj, gi] = 1
     conf_mask[b, best_n, gj, gi] = 1
+    再把best_n位置的網格設為 1 ，類似NMS非極大抑制效果刪除過多預測，留下IOU最大的一個
     tx[b, best_n, gj, gi] = gx - gi
     ty[b, best_n, gj, gi] = gy - gj
     我們將 gx - gi、gy - gj ，所以tx ty為0-1的值
